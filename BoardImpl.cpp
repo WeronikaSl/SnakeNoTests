@@ -1,11 +1,15 @@
 #include "BoardImpl.hpp"
 #include <iostream>
 
-void BoardImpl::displayBoard() const
+
+void BoardImpl::displayBoard()
 {
 	int height{10}; //change to one var?
 	int length{40};
-	Position fruitPosition = fruitImpl.generateFruitPosition();
+	Position fruitPosition = fruit.generateFruitPosition();
+	Position snakesHeadPosition = snake.getPositionOfHead();
+	snake.moveSnake();
+
 	for (int i{0}; i < length; i++) //put in one private function, code copied, displayRow()?
 	{
 		std::cout << "x";
@@ -13,31 +17,42 @@ void BoardImpl::displayBoard() const
 
 	std::cout << std::endl;
 
-	for (int i{0}; i < height; i++)
-	{
-		for (int k{0}; k < length; k++)
+
+		for (int i{ 0 }; i < height; i++)
 		{
-			if ((k == 0) || (k == (length - 1)))
+
+			for (int k{ 0 }; k < length; k++)
 			{
-				std::cout << "x";
+
+				if ((k == 0) || (k == (length - 1)))
+				{
+					std::cout << "x";
+				}
+				else if (i == fruitPosition[0] && k == fruitPosition[1])
+				{
+					fruit.displayFruit(); //sometimes doesn't display - why?
+				}
+				else if (i == snakesHeadPosition[0] && k == snakesHeadPosition[1])
+				{
+
+					snake.displaySnakesHead();
+
+				}
+				else
+				{
+					std::cout << " ";
+				}
+
+
 			}
-			else if (i == fruitPosition[0] && k == fruitPosition[1])
-			{
-				fruitImpl.displayFruit(); //sometimes doesn't display - why?
-			}
-			else
-			{
-				std::cout << " ";
-			}
-			
+
+			std::cout << std::endl;
+
+
 		}
-		std::cout << std::endl;
 
-	}
-
-
-	for (int i{0}; i < length; i++) //put in one private function, code copied
-	{
-		std::cout << "x";
-	}
+		for (int i{ 0 }; i < length; i++) //put in one private function, code copied
+		{
+			std::cout << "x";
+		}
 }

@@ -1,13 +1,19 @@
 #pragma once
+#include <memory>
 #include "Board.hpp"
+#include "FruitImpl.hpp"
+#include "SnakeImpl.hpp"
 
 class BoardImpl : public Board
 {
 public:
-	void displayBoard() const override;
+	void displayBoard() override;
+
 
 private:
-	FruitImpl fruitImpl;
+	FruitImpl fruit;
+	SnakeImpl snake;
+	
 
 
 

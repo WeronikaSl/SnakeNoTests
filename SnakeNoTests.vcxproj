@@ -130,6 +130,7 @@
     <ClCompile Include="BoardImpl.cpp" />
     <ClCompile Include="FruitImpl.cpp" />
     <ClCompile Include="MainFunction.cpp" />
+    <ClCompile Include="SnakeImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.hpp" />
@@ -138,6 +139,9 @@
     <ClInclude Include="Fruit.hpp" />
     <ClInclude Include="FruitImpl.hpp" />
     <ClInclude Include="FruitMock.hpp" />
+    <ClInclude Include="Snake.hpp" />
+    <ClInclude Include="SnakeImpl.hpp" />
+    <ClInclude Include="SnakeMock.hpp" />
     <ClInclude Include="Types.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

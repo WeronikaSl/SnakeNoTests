@@ -1,22 +1,23 @@
 #include <iostream>
 #include <thread> 
 #include "BoardImpl.hpp"
+#include "SnakeImpl.hpp"
 
 using namespace std::chrono_literals;
 
 
 int main()
 {
-    BoardImpl boardImpl;
+    BoardImpl board;
 
     int gameOver{ 0 }; //temporary Variable to test the code
 
     while (gameOver != 100)
     {
         system("cls"); //not safe to use, but there's no other option
-        boardImpl.displayBoard();
+        board.displayBoard();
         gameOver++;
-        std::this_thread::sleep_for(500ms); 
+        std::this_thread::sleep_for(50ms); 
     }
 
 }
