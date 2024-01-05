@@ -129,8 +129,10 @@
   <ItemGroup>
     <ClCompile Include="BoardImpl.cpp" />
     <ClCompile Include="FruitImpl.cpp" />
+    <ClCompile Include="GameManagerImpl.cpp" />
     <ClCompile Include="MainFunction.cpp" />
     <ClCompile Include="SnakeImpl.cpp" />
+    <ClCompile Include="UserInteractionHandlerImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.hpp" />
@@ -139,10 +141,16 @@
     <ClInclude Include="Fruit.hpp" />
     <ClInclude Include="FruitImpl.hpp" />
     <ClInclude Include="FruitMock.hpp" />
+    <ClInclude Include="GameManager.hpp" />
+    <ClInclude Include="GameManagerImpl.hpp" />
+    <ClInclude Include="GameManagerMock.hpp" />
     <ClInclude Include="Snake.hpp" />
     <ClInclude Include="SnakeImpl.hpp" />
     <ClInclude Include="SnakeMock.hpp" />
     <ClInclude Include="Types.hpp" />
+    <ClInclude Include="UserInteractionHandler.hpp" />
+    <ClInclude Include="UserInteractionHandlerImpl.hpp" />
+    <ClInclude Include="UserInteractionHandlerMock.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

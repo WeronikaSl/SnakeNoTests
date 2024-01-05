@@ -10,6 +10,6 @@ void FruitImpl::displayFruit() const
 Position FruitImpl::generateFruitPosition() const
 {
 	std::random_device rd;
-	std::uniform_int_distribution<uint16_t> dist(1, 10);  //depends on boardSize
+	std::uniform_int_distribution<uint16_t> dist(3, 20);  //depends on boardSize
 	return { dist(rd) ,dist(rd) };
 }

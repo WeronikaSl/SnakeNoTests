@@ -3,6 +3,7 @@
 #include "Board.hpp"
 #include "FruitImpl.hpp"
 #include "SnakeImpl.hpp"
+#include "UserInteractionHandlerImpl.hpp"
 
 class BoardImpl : public Board
 {
@@ -13,6 +14,7 @@ public:
 private:
 	FruitImpl fruit;
 	SnakeImpl snake;
+	UserInteractionHandlerImpl userInteractionhandler;
 	
 
 

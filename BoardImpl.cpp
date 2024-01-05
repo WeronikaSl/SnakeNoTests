@@ -2,13 +2,15 @@
 #include <iostream>
 
 
-void BoardImpl::displayBoard()
+void BoardImpl::displayBoard() //FIX SPAGHETTI CODE IN THIS METHOD
 {
 	int height{10}; //change to one var?
 	int length{40};
 	Position fruitPosition = fruit.generateFruitPosition();
+	Direction currentSnakesMovementDirection = snake.getDirectionOfMovement();
+	Direction direction = userInteractionhandler.convertUserInputToDirection(currentSnakesMovementDirection);
 	Position snakesHeadPosition = snake.getPositionOfHead();
-	snake.moveSnake();
+	snake.moveSnake(direction);
 
 	for (int i{0}; i < length; i++) //put in one private function, code copied, displayRow()?
 	{
