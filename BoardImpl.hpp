@@ -7,6 +7,7 @@ public:
 	void displayBoard() const override;
 
 private:
+	FruitImpl fruitImpl;
 
 
 

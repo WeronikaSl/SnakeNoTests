@@ -1,4 +1,5 @@
 #pragma once
+#include "FruitImpl.hpp"
 
 class Board
 {

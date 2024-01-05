@@ -20,6 +20,10 @@ void BoardImpl::displayBoard() const
 			{
 				std::cout << "x";
 			}
+			else if (i == 5 && k == 5) //dummy values to make it work, will be changed to randomly generated number later
+			{
+				fruitImpl.displayFruit();
+			}
 			else
 			{
 				std::cout << " ";

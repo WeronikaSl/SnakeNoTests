@@ -127,7 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SnakeNoTests.cpp" />
+    <ClCompile Include="BoardImpl.cpp" />
+    <ClCompile Include="FruitImpl.cpp" />
+    <ClCompile Include="MainFunction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Board.hpp" />
+    <ClInclude Include="BoardImpl.hpp" />
+    <ClInclude Include="BoardMock.hpp" />
+    <ClInclude Include="Fruit.hpp" />
+    <ClInclude Include="FruitImpl.hpp" />
+    <ClInclude Include="FruitMock.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
