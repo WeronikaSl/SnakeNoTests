@@ -3,8 +3,9 @@
 
 void BoardImpl::displayBoard() const
 {
-	int height{10}; //change to one var
+	int height{10}; //change to one var?
 	int length{40};
+	Position fruitPosition = fruitImpl.generateFruitPosition();
 	for (int i{0}; i < length; i++) //put in one private function, code copied, displayRow()?
 	{
 		std::cout << "x";
@@ -20,9 +21,9 @@ void BoardImpl::displayBoard() const
 			{
 				std::cout << "x";
 			}
-			else if (i == 5 && k == 5) //dummy values to make it work, will be changed to randomly generated number later
+			else if (i == fruitPosition[0] && k == fruitPosition[1])
 			{
-				fruitImpl.displayFruit();
+				fruitImpl.displayFruit(); //sometimes doesn't display - why?
 			}
 			else
 			{
