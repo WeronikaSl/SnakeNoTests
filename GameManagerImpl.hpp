@@ -13,5 +13,7 @@ public:
 private:
 	UserInteractionHandlerImpl userInteractionHandler;
 	BoardImpl board;
+	FruitImpl fruit;
+	Position fruitPosition{ 5,6 }; //change to FruitImpl
 
 };

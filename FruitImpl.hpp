@@ -6,10 +6,13 @@ class FruitImpl : public Fruit
 public:
 	uint8_t getFruit() const override;
 	Position generateFruitPosition() const;
+	Position getFruitPosition() const;
+	void setFruitPosition(Position);
+
 
 private:
 	uint8_t fruit{ 'F' };
-	Position fruitPosition; //is it needed?
+	Position fruitPosition{ 5,5 };
 
 
 };

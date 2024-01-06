@@ -8,16 +8,28 @@ Direction UserInteractionHandlerImpl::convertUserInputToDirection(Direction curr
     switch (userInput)
     {
     case 'w':
-        direction = Direction::UP;
+        if (currentDirection != Direction::DOWN)
+        {
+            direction = Direction::UP;
+        }
         break;
     case 'a':
-        direction = Direction::LEFT;
+        if (currentDirection != Direction::RIGHT)
+        {
+            direction = Direction::LEFT;
+        }
         break;
     case 's':
-        direction = Direction::DOWN;
+        if (currentDirection != Direction::UP)
+        {
+            direction = Direction::DOWN;
+        }
         break;
     case 'd':
-        direction = Direction::RIGHT;
+        if (currentDirection != Direction::LEFT)
+        {
+            direction = Direction::RIGHT;
+        }
     default:
         break;
     }
