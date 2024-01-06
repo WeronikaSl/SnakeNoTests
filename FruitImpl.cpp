@@ -2,9 +2,9 @@
 #include <iostream>
 #include <random>
 
-void FruitImpl::displayFruit() const
+uint8_t FruitImpl::getFruit() const
 {
-	std::cout << "F";
+	return fruit;
 }
 
 Position FruitImpl::generateFruitPosition() const

@@ -3,11 +3,11 @@
 
 Direction UserInteractionHandlerImpl::convertUserInputToDirection(Direction currentDirection)
 {
-    int userInput = takeInputFromUser();
-    Direction direction = currentDirection; //if user won't click anything, snake moves in the same direction
+    uint8_t userInput{ takeInputFromUser() }; //create type UserInput?
+    Direction direction{ currentDirection }; //if user won't click anything, snake moves in the same direction as before
     switch (userInput)
     {
-    case 'w': //change to enum class
+    case 'w':
         direction = Direction::UP;
         break;
     case 'a':

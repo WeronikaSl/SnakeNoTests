@@ -4,10 +4,11 @@
 class FruitImpl : public Fruit
 {
 public:
-	void displayFruit() const override;
+	uint8_t getFruit() const override;
 	Position generateFruitPosition() const;
 
 private:
+	uint8_t fruit{ 'F' };
 	Position fruitPosition; //is it needed?
 
 

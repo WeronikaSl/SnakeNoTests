@@ -4,6 +4,7 @@
 
 int main()
 {
+
 	GameManagerImpl gameManager;
 	gameManager.play();
 

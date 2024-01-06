@@ -23,9 +23,9 @@ void SnakeImpl::moveSnake(Direction direction)
 	}
 }
 
-void SnakeImpl::displaySnakesHead() const
+uint8_t SnakeImpl::getSnakesHead() const
 {
-	std::cout << "8";
+	return head;
 }
 
 Position SnakeImpl::getPositionOfHead() const
