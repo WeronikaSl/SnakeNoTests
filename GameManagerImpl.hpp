@@ -14,6 +14,8 @@ private:
 	UserInteractionHandlerImpl userInteractionHandler;
 	BoardImpl board;
 	FruitImpl fruit;
-	Position fruitPosition{ 5,6 }; //change to FruitImpl
+	SnakeImpl snake;
+	Position convertUserImputToSnakesMovement();
+	Position eatTheFruit(Position);
 
 };

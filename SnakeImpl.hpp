@@ -16,12 +16,8 @@ private:
 		Length lengthOfTail;
 	};
 
-	Position positionOfHead{ 5,5 }; //dummy values, will be changed later
+	Position positionOfHead{ 5,5 }; //dummy values, will be changed later //is it used?
 	Tail tail{ 4,5,5 }; //dummy values, will be changed later
 	Direction directionOfMovement{ Direction::NONE };
 	uint8_t head{ '8' };
-
-
-
-
 };

@@ -9,10 +9,7 @@ public:
 	Position getFruitPosition() const;
 	void setFruitPosition(Position);
 
-
 private:
 	uint8_t fruit{ 'F' };
-	Position fruitPosition{ 5,5 };
-
-
+	Position fruitPosition{ 5,5 }; //is it used?
 };
