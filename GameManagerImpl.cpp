@@ -1,20 +1,20 @@
 #include "GameManagerImpl.hpp"
+#include <iostream>
 
 void GameManagerImpl::play()
-{
-    int gameOver{ 0 }; //temporary Variable to test the code
+{ 
     Position newSnakesHeadPosition{ 5,5 }; //random values to start the game
     Position newFruitPosition{ 5,6 }; //random values to start the game
 
-    while (gameOver != 200)
+    while (!isGameOver)
     {
         system("cls"); //shouldn't be used, but there's no other option for now
         newSnakesHeadPosition = convertUserImputToSnakesMovement();
         newFruitPosition = eatTheFruit(newSnakesHeadPosition);
-        board.displayBoard(newSnakesHeadPosition, newFruitPosition, snake);
-        gameOver++;
+        board.displayBoard(newSnakesHeadPosition, newFruitPosition, snake, isGameOver);
         std::this_thread::sleep_for(400ms);
     }
+    std::cout << std::endl << "Points: " << score << std::endl;
 }
 
 Position GameManagerImpl::convertUserImputToSnakesMovement()
@@ -31,6 +31,7 @@ Position GameManagerImpl::eatTheFruit(Position snakesHeadPosition)
     {
         fruit.setFruitPosition(fruit.generateFruitPosition());
         snake.growTail(); //is there another way to do it?
+        score++;
 
     }
     return fruit.getFruitPosition();

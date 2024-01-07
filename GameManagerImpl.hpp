@@ -15,6 +15,8 @@ private:
 	BoardImpl board;
 	FruitImpl fruit;
 	SnakeImpl snake;
+	bool isGameOver{ false };
+	uint16_t score{ 0 };
 	Position convertUserImputToSnakesMovement();
 	Position eatTheFruit(Position);
 

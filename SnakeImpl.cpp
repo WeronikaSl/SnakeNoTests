@@ -65,7 +65,6 @@ void SnakeImpl::setTailPositions()
 	tail.tailPositions.resize(tail.lengthOfTail);
 	for (uint16_t i = 1; i < tail.lengthOfTail; i++) //starts with 1 because beginning of tail already has Position
 	{
-		//tail.tailPositions[i] = (tail.tailPositions[i - 1]);
 		tail.tailPositions[tail.lengthOfTail - i] = (tail.tailPositions[tail.lengthOfTail - i - 1]);
 	}
 }

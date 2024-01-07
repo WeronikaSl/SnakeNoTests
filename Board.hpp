@@ -7,5 +7,5 @@ class Board
 {
 public:
 	virtual ~Board(){}
-	virtual void displayBoard(Position, Position, SnakeImpl) = 0;
+	virtual void displayBoard(Position, Position, SnakeImpl, bool&) = 0;
 };
