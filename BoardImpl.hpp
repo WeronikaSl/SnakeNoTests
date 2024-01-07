@@ -6,7 +6,7 @@
 class BoardImpl : public Board
 {
 public:
-	void displayBoard(Position, Position) override;
+	void displayBoard(Position, Position, SnakeImpl) override;
 private:
 	static constexpr uint16_t numberOfRows{ 25 }; //can it be static?
 	static constexpr uint16_t numberOfColumns{ 30 }; //can it be static?
