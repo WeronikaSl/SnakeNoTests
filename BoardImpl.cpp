@@ -4,111 +4,71 @@
 #include <algorithm>
 
 
-void BoardImpl::displayBoard(Position snakesHeadPosition, Position fruitsPosition, SnakeImpl tempSnake, bool& gameOver) //FIX SPAGHETTI CODE IN THIS METHOD
+void BoardImpl::displayBoard(Position snakesHeadPosition, Position fruitsPosition, std::vector<Position> tailPositions) //FIX SPAGHETTI CODE IN THIS METHOD
 {
 	constexpr std::array<BoardComponent, 2> boardComponents{ 'x', ' ' };
+	constexpr std::array<uint16_t, 2> firstAndLastRowIndex{ 0, (numberOfRows-1) };
 
-	displayHorizontalFramePart(boardComponents[0], gameOver, snakesHeadPosition); //doesnt put x in array board
+	displayHorizontalFramePart(boardComponents[0], firstAndLastRowIndex[0]);
 
 	std::cout << std::endl;
 
-
-	for (uint16_t i{ 0 }; i < numberOfRows; i++) //can I use ranged based foor loop here somehow? //why i here is 0?
+	for (uint16_t i{ 1 }; i < firstAndLastRowIndex[1]; i++) //can I use ranged based foor loop here somehow? //first and last row displayed in different methods
 	{
 		for (uint16_t k{ 0 }; k < numberOfColumns; k++)
 		{
 			if ((k == 0) || (k == (numberOfColumns - 1))) //-1 because starts with 0, not with 1
 			{
 				displayBoardComponent(i, k, boardComponents[0]);
-				if ((snakesHeadPosition == (Position{ i, 0 }) || (snakesHeadPosition == Position{ i,numberOfColumns - 1 }))) //CODE COPIED, FIX
-				{
-					gameOver = true;
-				}
+				frameComponentsPositions.push_back(Position{ i, k });  //how to use emplace back here?
 			}
 			else if (i == snakesHeadPosition[0] && k == snakesHeadPosition[1])
 			{
 				displayBoardComponent(i, k, snake.getSnakesHead());
 			}
-			//else if (i == tempSnake.getTail().tailPositions[0][0] && k == tempSnake.getTail().tailPositions[0][1])
-			//{
-			//	std::cout << tempSnake.getTail().tailComponent;
-			//}
 			else if (i == fruitsPosition[0] && k == fruitsPosition[1])
 			{
 				displayBoardComponent(i, k, fruit.getFruit());
 			}
 			else
 			{
-				//Position pos{ i,k };
-				//auto beginningOfVec = tempSnake.getTail().tailPositions.begin();
-				//auto endOfVec = tempSnake.getTail().tailPositions.end();
-				//std::cout << "trace1";
-
-				//auto isValue = std::find(beginningOfVec, endOfVec, pos);
-				//std::cout << "trace2";
-				//if (isValue != endOfVec) //use creating variable in if statement (cpp17)
-				//{
-				//	std::cout << "trace3";
-				//	displayBoardComponent(i, k, tempSnake.getTail().tailComponent);
-				//	std::cout << "trace4";
-				//}
-				//else
-				//{
-				//	std::cout << "trace5";
-				//	displayBoardComponent(i, k, boardComponents[1]);
-				//}
-				bool wasPrinted{ 0 };
-				for (Position position : tempSnake.getTail().tailPositions)  //USE STD::FIND INSTEAD
+				if (auto isValue = std::find(tailPositions.begin(), tailPositions.end(), Position{i,k}); isValue != tailPositions.end())
 				{
-					if (snakesHeadPosition == position) //CODE COPIED, FIX
-					{
-						gameOver = true;
-					}
-					if (position[0] == i && position[1] == k)
-					{
-						displayBoardComponent(i, k, tempSnake.getTail().tailComponent);
-						wasPrinted = true;
-					}
+					displayBoardComponent(i, k, snake.getTail().tailComponent);
 				}
-				if (!wasPrinted)
+				else
 				{
 					displayBoardComponent(i, k, boardComponents[1]);
 				}
 			}
-
-
 		}
 			std::cout << std::endl;
 	}
 
-	displayHorizontalFramePart(boardComponents[0], gameOver, snakesHeadPosition);
+	displayHorizontalFramePart(boardComponents[0], firstAndLastRowIndex[1]);
+
+	//for (std::array<BoardComponent, numberOfColumns> rows : board) //added for testing purpouses
+	//{
+	//	for (BoardComponent component : rows)
+	//	{
+	//		std::cout << component;
+	//	}
+	//	std::cout << std::endl;
+	//}
+
 }
 
-bool BoardImpl::checkIfSnakeHitsTheFrame() const
+std::vector<Position> BoardImpl::getFrameComponentsPositions() const
 {
-	for (std::array<BoardComponent, numberOfColumns> rows : board)
-	{
-		for (BoardComponent boardComponent : rows)
-		{
-			if (boardComponent == 'x')
-			{
-				return true;
-			}
-		}
-	}
-	return false;
+	return frameComponentsPositions;
 }
 
-void BoardImpl::displayHorizontalFramePart(uint8_t boardComponent, bool& gameOver, Position snakesHeadPosition) const
+void BoardImpl::displayHorizontalFramePart(uint8_t boardComponent, uint16_t row)
 {
 	for (uint16_t i{ 0 }; i < numberOfColumns; i++)
 	{
-		if ((snakesHeadPosition == (Position{ 0, i })) || (snakesHeadPosition == (Position{ numberOfRows, i }))) //CODE COPIED, FIX
-		{
-			gameOver = true;
-		}
-		std::cout << boardComponent;
-
+		frameComponentsPositions.push_back(Position{ row, i }); //how to use emplace back here?
+		displayBoardComponent(row, i, boardComponent);
 	}
 }
 

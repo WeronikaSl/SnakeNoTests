@@ -50,7 +50,7 @@ Direction SnakeImpl::getDirectionOfMovement() const
 	return directionOfMovement;
 }
 
-SnakeImpl::Tail SnakeImpl::getTail()
+SnakeImpl::Tail SnakeImpl::getTail() const
 {
 	return tail;
 }

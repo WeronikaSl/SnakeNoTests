@@ -3,15 +3,16 @@
 
 void GameManagerImpl::play()
 { 
-    Position newSnakesHeadPosition{ 5,5 }; //random values to start the game
-    Position newFruitPosition{ 5,6 }; //random values to start the game
+    Position newSnakesHeadPosition{ snake.getPositionOfHead() };
+    Position newFruitPosition{ fruit.getFruitPosition() };
 
     while (!isGameOver)
     {
         system("cls"); //shouldn't be used, but there's no other option for now
         newSnakesHeadPosition = convertUserImputToSnakesMovement();
         newFruitPosition = eatTheFruit(newSnakesHeadPosition);
-        board.displayBoard(newSnakesHeadPosition, newFruitPosition, snake, isGameOver);
+        checkIfGameIsOver();
+        board.displayBoard(newSnakesHeadPosition, newFruitPosition, snake.getTail().tailPositions);
         std::this_thread::sleep_for(400ms);
     }
     std::cout << std::endl << "Points: " << score << std::endl;
@@ -30,9 +31,26 @@ Position GameManagerImpl::eatTheFruit(Position snakesHeadPosition)
     if (snakesHeadPosition == fruit.getFruitPosition())
     {
         fruit.setFruitPosition(fruit.generateFruitPosition());
-        snake.growTail(); //is there another way to do it?
+        snake.growTail();
         score++;
-
     }
     return fruit.getFruitPosition();
+}
+
+void GameManagerImpl::checkIfGameIsOver()
+{
+    for (Position frameComponentPosition : board.getFrameComponentsPositions())
+    {
+        if (frameComponentPosition == snake.getPositionOfHead())
+        {
+            isGameOver = true;
+        }
+    }
+    for (Position tailPosition : snake.getTail().tailPositions)
+    {
+        if (tailPosition == snake.getPositionOfHead())
+        {
+            isGameOver = true;
+        }
+    }
 }

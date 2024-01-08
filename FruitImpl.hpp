@@ -11,5 +11,5 @@ public:
 
 private:
 	uint8_t fruit{ 'F' };
-	Position fruitPosition{ 5,5 }; //is it used?
+	Position fruitPosition{ 5,5 }; //random starting position for first fruit
 };

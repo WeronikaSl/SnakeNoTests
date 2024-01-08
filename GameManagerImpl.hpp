@@ -19,5 +19,6 @@ private:
 	uint16_t score{ 0 };
 	Position convertUserImputToSnakesMovement();
 	Position eatTheFruit(Position);
+	void checkIfGameIsOver();
 
 };

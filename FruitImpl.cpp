@@ -10,7 +10,7 @@ uint8_t FruitImpl::getFruit() const
 Position FruitImpl::generateFruitPosition() const
 {
 	std::random_device rd;
-	std::uniform_int_distribution<uint16_t> dist(1, 24);  //depends on boardSize
+	std::uniform_int_distribution<uint16_t> dist(2, 23);  //depends on boardSize, shoule it be hardcoded? can i pass nr of rows and columns somehow?
 	return { dist(rd) ,dist(rd) };
 }
 
